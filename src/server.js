@@ -6,6 +6,7 @@ const app = Express();
 const forecast = require('./forecast');
 const geocode = require('./geoCodeLoc');
 
+const port = process.env.PORT || 3000;
 const htmlpath =  path.join(__dirname,'../public');
 const viewPath = path.join(__dirname,'../templates/views');
 const partialPath = path.join(__dirname,'../templates/partials');
@@ -85,9 +86,13 @@ app.get('/weather', (req,res)=>{
 
 })
 
-app.listen(3000,(err, res)=> {
+app.listen(port ,(err, res)=> {
     if(err)
     {
         console.log(err);
+    }
+    else
+    {
+        console.log('server is running on port no '+ port);
     }
 })
